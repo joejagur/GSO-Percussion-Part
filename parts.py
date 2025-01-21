@@ -1,6 +1,7 @@
 import pandas as pd
 import tkinter as tk
 from tkinter import filedialog, messagebox
+import datetime
 
 def main():
     root = tk.Tk()
@@ -43,7 +44,12 @@ def main():
     parts.sort()
     
     # Write the parts to a text file
-    write_parts_to_file(parts, weekly, songs, "Parts.txt")
+    filename = "Parts.txt"
+    now = datetime.datetime.now()
+
+    timestamp = now.strftime("%m-%d-%Y")
+    filename = str(timestamp) + " Parts.txt"
+    write_parts_to_file(parts, weekly, songs, filename)
 
     print_parts(parts)
 
@@ -77,7 +83,6 @@ def print_parts(parts):
         print(part)
 
 def write_parts_to_file(parts, songsSelected, allSongs, filename):
-    """Write the sorted list of parts to a text file."""
     with open(filename, "w") as f:
         f.write(f"Total Instruments needed: {len(parts)}\n")
         f.write("In Songs: \n")
