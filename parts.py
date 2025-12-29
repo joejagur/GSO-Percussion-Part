@@ -83,7 +83,13 @@ def print_parts(parts):
         print(part)
 
 def write_parts_to_file(parts, songsSelected, allSongs, filename):
-    with open(filename, "w") as f:
+    file_path = filedialog.asksaveasfilename(
+    title="Save file as",
+    defaultextension=".txt",
+    initialfile=filename,
+    filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
+)
+    with open(file_path, "w") as f:
         f.write(f"Total Instruments needed: {len(parts)}\n")
         f.write("In Songs: \n")
         for song in songsSelected: 
