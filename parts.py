@@ -28,7 +28,7 @@ def main():
     parts = set()
     for key in df:
         for row in df[key].iterrows():
-            if pd.isna(row[1].iloc[0]) or "Perc" in row[1].iloc[0].title() or (not pd.isna(row[1].iloc[1]) and "Cymbal" in row[1].iloc[0].title()):
+            if pd.isna(row[1].iloc[0]) or "Perc" in row[1].iloc[0].title() or "Mallet" in row[1].iloc[0].title() or (not pd.isna(row[1].iloc[1]) and "Cymbal" in row[1].iloc[0].title()):
                 part = row[1].iloc[1].capitalize()
                 part = fixVarient(part)
                 parts.add(part)
